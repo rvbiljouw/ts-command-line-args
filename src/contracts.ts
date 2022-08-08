@@ -65,11 +65,11 @@ export type PropertyOptions<T> = {
 } & OptionalPropertyOptions<T> &
     MultiplePropertyOptions<T>;
 
-export type OptionalProperty = { optional: true };
+export type OptionalProperty = { optional: boolean };
 
 export type OptionalPropertyOptions<T> = undefined extends T ? OptionalProperty : unknown;
 
-export type MultiplePropertyOptions<T> = Array<any> extends T ? { multiple: true } | { lazyMultiple: true } : unknown;
+export type MultiplePropertyOptions<T> = Array<any> extends T ? { multiple:  boolean } | { lazyMultiple: boolean } : unknown;
 
 export type HeaderLevel = 1 | 2 | 3 | 4 | 5;
 
@@ -222,7 +222,7 @@ export interface PartialParseOptions extends ArgsParseOptions<any> {
     /**
      * If `true`, `commandLineArgs` will not throw on unknown options or values, instead returning them in the `_unknown` property of the output.
      */
-    partial: true;
+    partial: boolean;
 }
 
 export interface StopParseOptions extends ArgsParseOptions<any> {
@@ -230,7 +230,7 @@ export interface StopParseOptions extends ArgsParseOptions<any> {
      * If `true`, `commandLineArgs` will not throw on unknown options or values. Instead, parsing will stop at the first unknown argument
      * and the remaining arguments returned in the `_unknown` property of the output. If set, `partial: true` is implied.
      */
-    stopAtFirstUnknown: true;
+    stopAtFirstUnknown: boolean;
 }
 
 export type CommandLineResults<R extends boolean> = R extends false
